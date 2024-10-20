@@ -16,11 +16,13 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.get('/' , (req ,res )=>{
-    res.send('hey riaynsh singh ')
-})
-
 app.listen(port, ()=>{
     console.log(`app listening on ${port}`);
+    
+})
+
+
+app.post ('/upload-book', async(req ,res) =>{
+    const data = req.body
     
 })
