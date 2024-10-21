@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -37,6 +37,7 @@ const userSchema = new mongoose.Schema({
         ref : 'orders',
     }]
 
-},{timestamps: true})
+},{timestamps: true});
 
-export const  userModel = mongoose.models.user || mongoose.model("user" , userSchema);
+
+export const UserModel = mongoose.model("User" , userSchema);

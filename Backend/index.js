@@ -1,7 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+
 import connectDB from './config/db.js';
 import 'dotenv/config'
+import { userRouter } from './routes/userRoute.js';
+import { signUp } from './controllers/userController.js';
 
 
 const app = express();
@@ -13,31 +16,7 @@ connectDB();
 
 
 // Routes
-// user routes 
-app.post('/api/users/register', (req, res) => {
-    res.send('User Registered');
-})
-
-//loguin
-app.post('/api/users/login', (req, res) => {
-    res.send('User Logged in');
-})
-
-//update
-app.put('/api/users/update', (req, res) => {
-    res.send(`User update`);
-})
-
-//delete
-app.delete('/api/users/:id', (req, res) => {
-    res.send(`User deleted`);
-})
-
-// fetch users
-
-app.get('/api/users', (req, res) => {
-    res.send(`All Users`);
-})
+app.use("/api/v1" , userRouter)
 
 
 
@@ -45,6 +24,9 @@ app.get('/api/users', (req, res) => {
 //middleware
 app.use(cors());
 app.use(express.json());
+
+
+
 
 app.listen(port, () => {
     console.log(`app listening on ${port}`);
